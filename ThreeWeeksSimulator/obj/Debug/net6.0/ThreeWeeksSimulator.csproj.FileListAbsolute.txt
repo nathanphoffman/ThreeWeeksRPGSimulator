@@ -1,0 +1,15 @@
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\ThreeWeeksSimulator.csproj.AssemblyReference.cache
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\ThreeWeeksSimulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\ThreeWeeksSimulator.AssemblyInfoInputs.cache
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\ThreeWeeksSimulator.AssemblyInfo.cs
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\ThreeWeeksSimulator.csproj.CoreCompileInputs.cache
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\bin\Debug\net6.0\ThreeWeeksSimulator.exe
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\bin\Debug\net6.0\ThreeWeeksSimulator.deps.json
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\bin\Debug\net6.0\ThreeWeeksSimulator.runtimeconfig.json
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\bin\Debug\net6.0\ThreeWeeksSimulator.dll
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\bin\Debug\net6.0\ThreeWeeksSimulator.pdb
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\ThreeWeeksSimulator.dll
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\refint\ThreeWeeksSimulator.dll
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\ThreeWeeksSimulator.pdb
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\ThreeWeeksSimulator.genruntimeconfig.cache
+C:\Users\talos\source\repos\ThreeWeeksSimulator\ThreeWeeksSimulator\obj\Debug\net6.0\ref\ThreeWeeksSimulator.dll
