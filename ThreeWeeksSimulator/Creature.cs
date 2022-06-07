@@ -20,6 +20,7 @@ namespace ThreeWeeksSimulator
             SetHitpoints();
         }
 
+        public int currentGroup;
         public int hearts;
         public int hitpoints;
         public int armor;
@@ -28,6 +29,12 @@ namespace ThreeWeeksSimulator
         public int charisma;
         public int dexterity;
         public List<Attack> attacks;
+
+        public Creature SetCurrentGroup(int numGroups)
+        {
+            currentGroup = Dice.Random(numGroups);
+            return this;
+        }
 
         public Creature AddNWAttack(int damage = 0, int numAttacks = 1)
         {
@@ -54,9 +61,12 @@ namespace ThreeWeeksSimulator
 
         public void LogCreatureStats()
         {
+            Console.WriteLine("------------------------------");
             Console.WriteLine($"Armor:{armor} Hearts:{hearts} Hitpoints:{hitpoints}");
             Console.WriteLine($"Stats: STR:{strength} INT:{intelligence} CHA:{charisma} DEX:{dexterity}");
+            Console.WriteLine($"Creature is at position {currentGroup}");
             attacks.ForEach(attack => Console.WriteLine($"Attack:{attack.numAttacks}x{attack.weaponType.ToString()}+{attack.damage}"));
+            Console.WriteLine("------------------------------");
         }
 
         public List<Attack> GetAttacksByType(Dice.enWeaponTypes weaponType, bool ranged)

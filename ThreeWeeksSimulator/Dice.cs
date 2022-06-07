@@ -53,7 +53,11 @@ namespace ThreeWeeksSimulator
             if (items.Count == 0) return default(T);
             if (items.Count == 1) return items.First();
             else return items[rnd.Next(items.Count)];
+        }
 
+        public static int Random(int number)
+        {
+            return rnd.Next(number) + 1;
         }
 
 
