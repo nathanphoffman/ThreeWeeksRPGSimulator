@@ -8,7 +8,7 @@ namespace ThreeWeeksSimulator
 {
     internal class Creature
     {
-        public Creature(int hearts, int armor, int intelligence, int strength, int charisma, int dexterity)
+        public Creature(string name, int hearts, int armor, int intelligence, int strength, int charisma, int dexterity)
         {
             this.hearts = hearts;
             this.armor = armor;
@@ -17,6 +17,7 @@ namespace ThreeWeeksSimulator
             this.charisma = charisma;
             this.dexterity = dexterity;
             this.attacks = new List<Attack>();
+            this.name = name;
             SetHitpoints();
         }
 
@@ -28,6 +29,7 @@ namespace ThreeWeeksSimulator
         public int strength;
         public int charisma;
         public int dexterity;
+        public string name;
         public List<Attack> attacks;
 
         public Creature SetCurrentGroup(int numGroups)
@@ -36,21 +38,28 @@ namespace ThreeWeeksSimulator
             return this;
         }
 
-        public Creature AddNWAttack(int damage = 0, int numAttacks = 1)
+        public Creature AddNWAttack(int damage = 0, int numAttacks = 1, bool ranged = false)
         {
-            attacks.Add(new Attack { damage = damage, numAttacks = numAttacks, weaponType = Dice.enWeaponTypes.NW });
+            attacks.Add(new Attack { damage = damage, numAttacks = numAttacks, weaponType = Dice.enWeaponTypes.NW, ranged = ranged });
             return this;
         }
 
-        public Creature AddOHAttack(int damage = 0, int numAttacks = 1)
+        public Creature AddOHAttack(int damage = 0, int numAttacks = 1, bool ranged = false)
         {
-            attacks.Add(new Attack { damage = damage, numAttacks = numAttacks, weaponType = Dice.enWeaponTypes.OH });
+            attacks.Add(new Attack { damage = damage, numAttacks = numAttacks, weaponType = Dice.enWeaponTypes.OH, ranged = ranged });
             return this;
         }
 
-        public Creature AddTHAttack(int damage = 0, int numAttacks = 1)
+        public Creature AddTHAttack(int damage = 0, int numAttacks = 1, bool ranged = false)
         {
-            attacks.Add(new Attack { damage = damage, numAttacks = numAttacks, weaponType = Dice.enWeaponTypes.TH });
+            attacks.Add(new Attack { damage = damage, numAttacks = numAttacks, weaponType = Dice.enWeaponTypes.TH, ranged = ranged });
+            return this;
+        }
+
+        public Creature AddDefaultWeapon()
+        {
+            var attackResults = attacks.Where(x => x.weaponType == Dice.enWeaponTypes.NW).ToList();
+            if (attackResults.Count == 0 && attacks != null) attacks.Add(new Attack { weaponType = Dice.enWeaponTypes.NW});
             return this;
         }
 
@@ -74,6 +83,15 @@ namespace ThreeWeeksSimulator
             return attacks.Where(x => x.weaponType == weaponType && x.ranged == ranged).ToList();
         }
 
+        public Attack GetAttackByType(Dice.enWeaponTypes weaponType, bool ranged)
+        {
+            var attacks = GetAttacksByType(weaponType, ranged);
+            if (attacks.Count == 0) return null;
+
+            var attack = Dice.Choose(attacks);
+            return attack;
+        }
+
         public Attack SelectAttack(bool mobile, bool ranged = false)
         {
             // two handed attacks always take priority since they deal more damage on average
@@ -93,25 +111,24 @@ namespace ThreeWeeksSimulator
             return null;
 
         }
-
     }
 
     internal class Attack
     {
-        public int damage;
-        public int numAttacks;
-        public bool ranged;
+        public int damage = 0;
+        public int numAttacks = 1;
+        public bool ranged = false;
         public Dice.enWeaponTypes weaponType;
         public string MakeAttack(Creature attacker, Creature target)
         {
             int checkModifier = 0;
             if (weaponType == Dice.enWeaponTypes.NW || weaponType == Dice.enWeaponTypes.TH) checkModifier = attacker.strength;
             if (weaponType == Dice.enWeaponTypes.OH) checkModifier = attacker.dexterity;
-            (int result, bool success) = Dice.MakeAttack(target.armor, weaponType, checkModifier, damage);
+            (int result, bool success) = Dice.MakeAttack(target.armor, weaponType, checkModifier, damage, attacker.strength);
             if (success)
             {
                 target.hitpoints -= result;
-                return $"Creature dealt {result} damage.";
+                return $"{attacker.name} dealt {result} damage to {target.name}";
             }
 
             return "Creature swung and missed";

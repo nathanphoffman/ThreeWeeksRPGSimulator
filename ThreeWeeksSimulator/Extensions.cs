@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ThreeWeeksSimulator
 {
-    internal class Extensions
+    public static class Extensions
     {
+        public static IEnumerable<T> RemoveNulls<T>(this IEnumerable<T> list)
+        {
+            return list.Where(x => x != null);
+        } 
     }
 }

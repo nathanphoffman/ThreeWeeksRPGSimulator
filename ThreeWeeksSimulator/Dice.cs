@@ -20,10 +20,13 @@ namespace ThreeWeeksSimulator
             return RollD6() + RollD6();
         }
 
-        public static (int result, bool success) MakeAttack(int target, enWeaponTypes weaponType, int checkMod = 0, int damageMod = 0)
+        public static (int result, bool success) MakeAttack(int target, enWeaponTypes weaponType, int checkMod = 0, int damageMod = 0, int attackerStrength = 0)
         {
             var die1 = RollD6();
             var die2 = RollD6();
+
+            // Natural weapons are the only weapons that add a modifier on the attack by default
+            if (weaponType == enWeaponTypes.NW) damageMod += attackerStrength;
 
             int dieResult = 0;
             if(weaponType == enWeaponTypes.NW) dieResult = die1 < die2 ? die1: die2;
@@ -32,21 +35,6 @@ namespace ThreeWeeksSimulator
 
             if (die1 == die2) return ((dieResult + damageMod) * 2, true);
             else return (dieResult + damageMod, die1 + die2 + checkMod >= target);
-        }
-
-        public static (int result, bool success) NW(int target, int checkMod = 0, int damageMod = 0)
-        {
-            return MakeAttack(target, enWeaponTypes.NW, checkMod, damageMod);
-        }
-
-        public static (int result, bool success) OH(int target, int checkMod = 0, int damageMod = 0)
-        {
-            return MakeAttack(target, enWeaponTypes.OH, checkMod, damageMod);
-        }
-
-        public static (int result, bool success) TH(int target, int checkMod = 0, int damageMod = 0)
-        {
-            return MakeAttack(target, enWeaponTypes.TH, checkMod, damageMod);
         }
 
         public static T Choose<T>(List<T> items) {
