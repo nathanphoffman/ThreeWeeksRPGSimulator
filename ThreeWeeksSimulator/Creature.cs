@@ -128,10 +128,10 @@ namespace ThreeWeeksSimulator
             if (success)
             {
                 target.hitpoints -= result;
-                return $"{attacker.name} dealt {result} damage to {target.name}";
+                return $"{attacker.name} ({attacker.hitpoints}) dealt {weaponType.ToString()} {result} damage to {target.name} ({target.hitpoints})";
             }
 
-            return "Creature swung and missed";
+            return $"{attacker.name} ({attacker.hitpoints}) swung {weaponType.ToString()} and missed against {target.name} ({target.hitpoints})";
         }
 
     }
