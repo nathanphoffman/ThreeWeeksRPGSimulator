@@ -59,8 +59,8 @@ namespace ThreeWeeksSimulator
         public static (int result,List<string> logs) Run(int numberOfGroups = 3)
         {
             List<string> logging = new List<string>();
-            var creature1Ranged = new Creature("GoblinRanged", 3, 6, 1, 1, 1, 2).AddTHAttack(0, 1, true).SetCurrentGroup(numberOfGroups).AddDefaultWeapon();
-            var creature1 = new Creature("Goblin", 3, 6, 1, 1, 1, 2).AddTHAttack().SetCurrentGroup(numberOfGroups).AddDefaultWeapon();
+            var creature1Ranged = new Creature("GoblinRanged", 6, 6, 1, 1, 1, 2).AddOHAttack(0, 1, false).SetCurrentGroup(numberOfGroups).AddDefaultWeapon();
+            var creature1 = new Creature("Goblin", 6, 6, 1, 1, 1, 2).AddOHAttack().SetCurrentGroup(numberOfGroups).AddDefaultWeapon();
             var creature2Ranged = new Creature("OrcRanged", 3, 10, 1, 1, 1, 2).AddOHAttack(0, 1, true).SetCurrentGroup(numberOfGroups).AddDefaultWeapon();
             var creature2 = new Creature("Orc", 3, 10, 1, 1, 1, 2).AddOHAttack().SetCurrentGroup(numberOfGroups).AddDefaultWeapon();
 
