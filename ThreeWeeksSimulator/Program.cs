@@ -2,7 +2,8 @@
 
 
 
-ThreeWeeksSimulator.Simulator.RunStatistics();
+
+ThreeWeeksSimulator.Simulator.RunStatistics(1000000);
 
 
 

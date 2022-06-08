@@ -68,14 +68,14 @@ namespace ThreeWeeksSimulator
             hitpoints = Dice.Roll2D6() * hearts;
         }
 
-        public void LogCreatureStats()
+        public void LogCreatureStats(List<string> log)
         {
-            Console.WriteLine("------------------------------");
-            Console.WriteLine($"Armor:{armor} Hearts:{hearts} Hitpoints:{hitpoints}");
-            Console.WriteLine($"Stats: STR:{strength} INT:{intelligence} CHA:{charisma} DEX:{dexterity}");
-            Console.WriteLine($"Creature is at position {currentGroup}");
-            attacks.ForEach(attack => Console.WriteLine($"Attack:{attack.numAttacks}x{attack.weaponType.ToString()}+{attack.damage}"));
-            Console.WriteLine("------------------------------");
+            log.Add("------------------------------");
+            log.Add($"Armor:{armor} Hearts:{hearts} Hitpoints:{hitpoints}");
+            log.Add($"Stats: STR:{strength} INT:{intelligence} CHA:{charisma} DEX:{dexterity}");
+            log.Add($"Creature is at position {currentGroup}");
+            attacks.ForEach(attack => log.Add($"Attack:{attack.numAttacks}x{attack.weaponType.ToString()}+{attack.damage}"));
+            log.Add("------------------------------");
         }
 
         public List<Attack> GetAttacksByType(Dice.enWeaponTypes weaponType, bool ranged)
